@@ -16,7 +16,7 @@ function GitHubIcon({ size = 24 }: { size?: number }) {
   );
 }
 
-const skills = ["Python", "C", "HTML", "CSS", "JavaScript"];
+const skills = ["C", "Python", "Java"];
 
 const projects = [
   {
@@ -38,7 +38,7 @@ export default function Home() {
     <div className="flex flex-col flex-1">
       <header className="sticky top-0 z-10 bg-blush/80 backdrop-blur">
         <nav className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-          <span className="text-lg font-semibold text-ink">张三</span>
+          <span className="text-xl font-semibold text-ink">夏蕴源</span>
           <div className="flex gap-6 text-sm text-ink">
             <Link href="#home" className="transition-colors hover:text-accent">
               首页
@@ -66,18 +66,18 @@ export default function Home() {
             className="rounded-full"
             priority
           />
-          <div className="flex flex-col items-center gap-3 text-center">
-            <h1 className="text-2xl font-semibold text-ink">准大二前端练习生</h1>
+          <div className="flex flex-col items-center gap-4 text-center">
+            <h1 className="text-4xl font-bold text-ink">夏蕴源</h1>
+            <p className="text-lg text-ink/70">准大二代码练习生</p>
             <p className="max-w-md text-sm leading-7 text-ink/80">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              我是夏蕴源，目前就读于南京大学软工经济专业，正在学习web开发~
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full bg-pink-100/50 px-4 py-2 text-sm text-ink"
+                className="rounded-full bg-pink-100/50 px-4 py-2 text-base text-ink"
               >
                 {skill}
               </span>

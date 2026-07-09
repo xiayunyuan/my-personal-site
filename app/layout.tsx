@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "张三 | 个人主页",
-  description: "准大二前端练习生的个人主页",
+  title: "夏蕴源 | 个人主页",
+  description: "准大二代码练习生的个人主页",
 };
 
 export default function RootLayout({
