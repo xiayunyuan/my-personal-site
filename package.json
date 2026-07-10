@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "gen:blog": "node scripts/generate-blog.mjs",
-    "ci:build": "npm install && npm run build && ln -sf \"$PWD/out\" /out"
+    "ci:build": "npm install && npm run build"
   },
   "dependencies": {
     "lucide-react": "^1.23.0",
