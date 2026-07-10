@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "gen:blog": "node scripts/generate-blog.mjs",
-    "deploy": "export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && nvm install 20 && npm install && npm run build && tcb hosting deploy ./out /my-personal-site -e my-personal-site-d1e1c32356acc10"
+    "deploy": "npm install && npm run build && tcb hosting deploy ./out /my-personal-site -e my-personal-site-d1e1c32356acc10"
   },
   "dependencies": {
     "lucide-react": "^1.23.0",
