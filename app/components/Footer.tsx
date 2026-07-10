@@ -19,7 +19,7 @@ export default function Footer() {
     <footer className="border-t border-ink/10">
       <div className="mx-auto flex max-w-3xl items-center justify-center gap-8 px-6 py-8 text-ink">
         <a
-          href="https://github.com"
+          href="https://github.com/xiayunyuan"
           target="_blank"
           rel="noopener noreferrer"
           className="transition-colors hover:text-accent"
@@ -28,7 +28,7 @@ export default function Footer() {
           <GitHubIcon size={24} />
         </a>
         <a
-          href="mailto:hello@example.com"
+          href="mailto:439470487@qq.com"
           className="transition-colors hover:text-accent"
           aria-label="邮箱"
         >
