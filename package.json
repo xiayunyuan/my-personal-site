@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "gen:blog": "node scripts/generate-blog.mjs",
-    "deploy": "npm install && npm run build && tcb hosting deploy ./out /my-personal-site -e my-personal-site-d1e1c32356acc10"
+    "ci:build": "npm install && npm run build"
   },
   "dependencies": {
     "lucide-react": "^1.23.0",
