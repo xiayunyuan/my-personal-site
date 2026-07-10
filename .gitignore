@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated blog pages
+app/blog/posts-manifest.ts
+app/blog/*/page.tsx

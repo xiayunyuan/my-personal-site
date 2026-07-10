@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  output: 'export',  // 只加这一行
 };
 
 export default nextConfig;

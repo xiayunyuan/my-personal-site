@@ -1,0 +1,40 @@
+# =============================================================
+# GitLab CI/CD 流水线配置
+# 作用：git push 到 GitLab 后，自动把 public/ 目录同步到
+#       腾讯云 CVM 云服务器的 Nginx 网站根目录
+# 部署方式：SSH 免密 + rsync
+# =============================================================
+#
+# 【必填】在 GitLab 仓库 Settings -> CI/CD -> Variables 中配置以下变量：
+#   SSH_PRIVATE_KEY  - 本地生成的 SSH 私钥（用于免密登录服务器）
+#   SERVER_IP        - 腾讯云 CVM 公网 IP，例如 123.45.67.89
+#   SERVER_USER      - SSH 登录用户名，例如 ubuntu / root / lighthouse
+#   DEPLOY_PATH      - Nginx 网站根目录，例如 /var/www/summer_course
+#
+# 如不想使用变量，也可直接把下方 ${SERVER_IP} 等替换为真实值。
+# =============================================================
+
+stages:
+  - deploy
+
+deploy_to_cvm:
+  stage: deploy
+  image: alpine:latest
+  only:
+    - main          # 仅 main 分支推送时触发；默认分支若为 master 请自行修改
+  before_script:
+    # 安装 rsync 与 ssh 客户端
+    - apk add --no-cache rsync openssh-client
+    # 启动 ssh-agent 并加载私钥
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    # 信任服务器主机（跳过首次连接确认）
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null\n\n" > ~/.ssh/config
+  script:
+    # 将 public/ 目录内容同步上传到服务器 Nginx 根目录
+    # --delete 保持远端与源完全一致（远端多余文件会被删除）
+    - rsync -avz --delete -e "ssh -p 22" public/ ${SERVER_USER}@${SERVER_IP}:${DEPLOY_PATH}/
+  after_script:
+    - eval $(ssh-agent -k) >/dev/null 2>&1

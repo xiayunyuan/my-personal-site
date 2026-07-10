@@ -4,9 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "predev": "node scripts/generate-blog.mjs",
     "build": "next build",
+    "prebuild": "node scripts/generate-blog.mjs",
+    "postinstall": "node scripts/generate-blog.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "gen:blog": "node scripts/generate-blog.mjs",
+    "deploy": "npm install && npm run build && tcb hosting deploy ./out /my-personal-site -e my-personal-site-d1e1c32356acc10"
   },
   "dependencies": {
     "lucide-react": "^1.23.0",
